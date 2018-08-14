@@ -45,7 +45,7 @@ $(HTML): ./www/%.html: ./md/%.md head.html tail.html
 	cat tail.html >> $@
 
 $(HTMLDIR): ./www/%: ./md/%
-	mkdir -p $@
+	@mkdir -p $@
 
 $(GALFILE): gal.tsv
 	awk -v section=$(@:md/gal/%.md=%)	-f bin/grid.awk $<	> $@
