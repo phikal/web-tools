@@ -71,6 +71,8 @@ article ul#grid li img {
 	border: 1px solid gray;
 }
 
+img { max-width: 100%; }
+
 article h1 b,
 article h2 b,
 article h3 b { color: #888; }
