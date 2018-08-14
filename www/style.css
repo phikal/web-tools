@@ -21,17 +21,7 @@ p {
 a { color: #3465a4; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-blockquote{
-	background: #FFFFE4;
-	border-radius: 4px;
-	border: 1px solid #DDDDA3;
-	margin: 0 2em;
-	display: block;
-}
-blockquote > p {
-	padding: 0;
-	margin: 8px;
-}
+blockquote{ font-style: italic; }
 
 hr{ border:0; border-bottom:1px solid #ccc; }
 
