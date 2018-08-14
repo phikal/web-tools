@@ -1,4 +1,4 @@
-# Projects
+# projects
 
 This section lists projects I am currently working on:
 

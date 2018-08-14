@@ -1,4 +1,4 @@
-# Tnyyrel
+# gallery
 
 Over the years I have gathered many pictures, images and other graphical content
 from all over the web. Probably one reason for this was the experience of having
@@ -14,9 +14,6 @@ containing a list of black-and-white thumbnails, to make loading the page
 easier. By clicking on a thumbnail, you will be sent to the actual image, which
 in turn should be optimised. If available or I know anything specific about an
 image, I shall add a comment below.
-
-For a "raw" directory view of the images, go to the [files](/~phi/files/img/)
-section of my page.
 
 ---
 
