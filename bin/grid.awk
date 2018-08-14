@@ -1,6 +1,6 @@
 BEGIN {
 	 if (ARGV[1] ~ /^doc/) doc = 1
-	 else if (ARGV[1] ~ /^gal/) gal = 0
+	 else if (ARGV[1] ~ /^gal/) gal = 1
 	 else {
 		  print "invalid mode: either 'gal' or 'doc'" > "/dev/stderr"
 		  exit 1
