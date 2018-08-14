@@ -63,8 +63,8 @@ $(DTMPDIR):
 www/git/index.html: $(GIT:%=www/git/%)
 	stagit-index $(GIT:%=www/git/%.git/) > $@
 
-www/files/index.html: $(find www/files)
-	tree -I index.html -T files -H /files --dirsfirst -F -D --du -h -Q -C -o $@ www/files
+www/files/index.html: www/files $(find www/files)
+	tree -I index.html -T files -H /files --dirsfirst -F -D --du -h -Q -C -o $@ $<
 	sed -i '/GENERATOR/a<style>body{ margin: 0.5em; }</style>' $@
 	sed -i '/GENERATOR/a<link rel="stylesheet" href="/normalize.css" />' $@
 	sed -i '/GENERATOR/a<meta name="viewport" content="width=device-width" />' $@
