@@ -1,0 +1,135 @@
+/* This file is a mess.
+ * I say this every night,
+ * every day,
+ * every afternoon,
+ * and it's so true:
+ * THIS FILE IS A MESS.
+ *
+ * This file is the weakest file in
+ * directory this by far */
+
+body{
+	font-family: arial, sans-serif;
+	margin: 1em auto 0 auto;
+	display: table;
+}
+
+p {
+	text-align: justify;
+	color: #111;
+}
+a { color: #3465a4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+blockquote{
+	background: #FFFFE4;
+	border-radius: 4px;
+	border: 1px solid #DDDDA3;
+	margin: 0 2em;
+	display: block;
+}
+blockquote > p {
+	padding: 0;
+	margin: 8px;
+}
+
+hr{ border:0; border-bottom:1px solid #ccc; }
+
+article {
+	padding: 0.25em;
+	float: right;
+	max-width: 550px;
+}
+
+article h1 { font-size: 140%; }
+article h2 { font-size: 130%; }
+article h3 { font-size: 120%; }
+article h4 { font-size: 110%; }
+
+article h1:first-of-type { margin-top: 0; max-width: 100%;}
+article ul { padding-left: 1.75em; }
+
+article ul#grid {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	margin: 0 auto;
+}
+
+article ul#grid li {
+	list-style: none;
+	padding: 4px;
+	max-width: 150px;
+	flex-basis: 150px;
+	flex-grow:
+	font-size: smaller;
+	margin: 4px auto;
+}
+
+article ul#grid li p,
+article ul#grid li h2 {
+	margin: 0 0 2px 0;
+}
+
+article ul#grid li h2 {
+	font-size: small;
+	text-align: center;
+}
+
+
+article ul#grid li img {
+	border: 1px solid gray;
+}
+
+article h1 b,
+article h2 b,
+article h3 b { color: #888; }
+
+
+aside {
+	font-size: small;
+	padding: 0.75em;
+	margin: 0 4px;
+	background: #FFFFE4;
+	border-radius: 4px;
+	border: 1px solid #DDDDA3;
+	float: right;
+	max-width: 170px;
+	margin-left: 1em;
+}
+
+aside > h1 {
+	font-size: inherit;
+	margin: 0;
+}
+
+aside > ul {
+	list-style: lower-greek;
+	padding: 0 0 0em 1.5em;
+	margin: 0;
+}
+
+aside > pre { margin-bottom: 0; }
+
+@media (max-width: 700px) {
+	body { padding: 1em; }
+	aside {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		max-width: none;
+		text-align: center;
+		border-width: 0;
+		border-bottom-width:1px;
+		border-radius: 0;
+		float: none;
+		margin: 0 0 0.75em 0;
+		font-size: smaller;
+		padding: 10px 0;
+	}
+	aside > ul { margin: 0; margin-top: 4px; list-style: none; padding: 0;}
+	aside > ul > li { display: inline; padding: 0.25em; }
+	aside > p { display: none; }
+	article { max-width: 100vw; margin-top: 1.9em; }
+}

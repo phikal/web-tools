@@ -1,0 +1,129 @@
+#############
+# constants #
+#############
+
+SSH_TARGET = raven:www
+
+#############
+# variables #
+#############
+
+GAL = infog faces wallp selfm etc
+DOC =
+GIT = RNDj ReGeX doji llist nbody neoc sc wastat scripts emacs.d # 0bwm bft
+
+#############################
+# automatically found files #
+#############################
+
+GALFILE  := $(GAL:%=md/gal/%.md)
+DOCFILE  := $(DOC:%=md/doc/%.md)
+GITDIR   := $(GIT:%=www/git/%.git/)
+DOCDIR   != find ./www/pdf/ -type f
+GALDIR   != find ./www/img/ -type f
+ITMPDIR  := $(GALDIR:./www/img/%=./www/tmb/img/%)
+DTMPDIR  := $(DOCDIR:./www/pdf/%.pdf=./www/tmb/pdf/%.png)
+MARKDOWN != find ./md/ -type f -name "*.md"
+TXTS     != find ./md/txt/ -type f -name "*.md"
+HTML     := $(MARKDOWN:./md/%.md=./www/%.html)
+MDDIR    != find ./md/ -type d
+HTMLDIR  := $(MDDIR:./md/%=./www/%)
+
+##################
+# default target #
+##################
+
+all: markdown www/files/index.html www/txt/atom.xml stagit sync
+
+################################
+# actually existing filesystem #
+################################
+
+$(HTML): ./www/%.html: ./md/%.md head.html tail.html
+	cat head.html > $@
+	markdown -f smarty,html,autolink,footnote,header,del  $< >> $@
+	cat tail.html >> $@
+
+$(HTMLDIR): ./www/%: ./md/%
+	mkdir -p $@
+
+$(GALFILE): gal.tsv
+	awk -v section=$(@:md/gal/%.md=%)	-f bin/grid.awk $<	> $@
+
+$(ITMPDIR):
+	convert $(@:www/tmb/img/%=www/img/%) -alpha off -resize 200 $@
+
+$(DOCFILE): doc.tsv
+	awk -v section=$(@:md/doc/%.md=%)	-f bin/grid.awk $<	> $@
+
+$(DTMPDIR):
+	mutool draw -o $@ -F png -r 50 -w 200 -c gray $(@:www/tmb/pdf/%.png=www/pdf/%.pdf) 1
+	optipng -silent -strip all -o6 $@
+
+www/git/index.html: $(GIT:%=www/git/%)
+	stagit-index $(GIT:%=www/git/%.git/) > $@
+
+www/files/index.html: $(find www/files)
+	tree -I index.html -T files -H /files --dirsfirst -F -D --du -h -Q -C -o $@ www/files
+	sed -i '/GENERATOR/a<style>body{ margin: 0.5em; }</style>' $@
+	sed -i '/GENERATOR/a<link rel="stylesheet" href="/normalize.css" />' $@
+	sed -i '/GENERATOR/a<meta name="viewport" content="width=device-width" />' $@
+	sed -i '/GENERATOR/a<meta name="referrer" content="none" />' $@
+
+www/txt/atom.xml: $(TXTS)
+	awk -f bin/blog.awk $^ | \
+		sort -k2nr | sed 20q | \
+		awk -f bin/atom.awk | asc2xml> $@
+
+$(GIT:%=www/git/%): $(GIT:%=www/git/%.git)
+	[ ! -d $@ ] && mkdir $@
+	stagit -c .cache -C $@ $@.git
+	ln -f www/git/style.css $@/style.css
+	ln -f www/git/logo.png $@/logo.png
+	ln -f $@/log.html $@/index.html
+
+##########
+# pseuds #
+##########
+
+markdown: $(HTMLDIR) $(HTML) head.html tail.html
+
+update-git: # can take a while
+	@for f in $(GIT:%=www/git/%.git)
+	@do
+	@cd $$f
+	git fetch -v
+	@git gc
+	@cd ../../..
+	@done
+
+stagit: $(GIT:%=www/git/%) www/git/index.html
+
+git: update-git stagit
+
+ggal: $(GALFILE) $(ITMPDIR)
+
+gdoc: $(DOCFILE) $(DTMPDIR)
+
+clean:
+	rm www/tmb/pdf/* www/tmb/img/* www/index.html www/gal/* www/doc/*
+	@for f in $(GALFILE)
+	@do
+	@rm -f $$f
+	@done
+	@for f in $(DOCFILE)
+	@do
+	rm -f $$f
+	@done
+	rm $(HTML)
+
+sync:
+	rsync -azrtucPH --links --delete www/ ${SSH_TARGET}
+
+###########
+# options #
+###########
+
+.PHONY: all markdown update-git git ggal gdoc clean sync
+.TARGET: all
+.ONESHELL:

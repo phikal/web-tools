@@ -1,0 +1,10 @@
+*.html
+*.png
+*.jpg
+*.gif
+www/git/
+www/img/
+www/vid/
+www/pdf/
+www/files/
+atom.xml
