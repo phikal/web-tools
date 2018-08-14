@@ -41,7 +41,7 @@ all: markdown www/files/index.html www/txt/atom.xml stagit sync
 
 $(HTML): ./www/%.html: ./md/%.md head.html tail.html
 	cat head.html > $@
-	markdown -f smarty,html,autolink,footnote,header,del  $< >> $@
+	cmark --smart --normalize $< >> $@
 	cat tail.html >> $@
 
 $(HTMLDIR): ./www/%: ./md/%
