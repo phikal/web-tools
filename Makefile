@@ -24,7 +24,7 @@ GALDIR   != find ./www/img/ -type f
 ITMPDIR  := $(GALDIR:./www/img/%=./www/tmb/img/%)
 DTMPDIR  := $(DOCDIR:./www/pdf/%.pdf=./www/tmb/pdf/%.png)
 MARKDOWN != find ./md/ -type f -name "*.md"
-TXTS     != find ./md/txt/ -type f -name "*.md"
+TXTS     != find ./md/txt/ -type f -name "*.md" -and -not -name index.md
 HTML     := $(MARKDOWN:./md/%.md=./www/%.html)
 MDDIR    != find ./md/ -type d
 HTMLDIR  := $(MDDIR:./md/%=./www/%)
