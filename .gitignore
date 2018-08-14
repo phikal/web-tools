@@ -2,6 +2,10 @@
 *.png
 *.jpg
 *.gif
+md/gal/*.md
+md/gal/index.md
+md/doc/*.md
+md/doc/index.md
 www/git/
 www/img/
 www/vid/
