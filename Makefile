@@ -10,7 +10,7 @@ SSH_TARGET = raven:www
 
 GAL = infog faces wallp selfm etc
 DOC =
-GIT = RNDj ReGeX doji llist nbody neoc sc wastat scripts emacs.d # 0bwm bft
+GIT = RNDj ReGeX doji llist nbody neoc sc wastat scripts emacs.d web-tools # 0bwm bft
 
 #############################
 # automatically found files #
