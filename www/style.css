@@ -28,15 +28,15 @@ hr{ border:0; border-bottom:1px solid #ccc; }
 article {
 	padding: 0.25em;
 	float: right;
-	max-width: 550px;
+	width: 550px;
 }
 
-article h1 { font-size: 140%; }
-article h2 { font-size: 130%; }
-article h3 { font-size: 120%; }
-article h4 { font-size: 110%; }
+article h1 { font-size: 150%; }
+article h2 { font-size: 110%; }
+article h3 { font-size: 105%; }
+article h4 { font-size: 100%; }
 
-article h1:first-of-type { margin-top: 0; max-width: 100%;}
+article *:first-child { margin-top: 0; max-width: 100%;}
 article ul { padding-left: 1.75em; }
 
 article ul#grid {
@@ -103,8 +103,8 @@ aside > ul {
 
 aside > pre { margin-bottom: 0; }
 
-@media (max-width: 700px) {
-	body { padding: 1em; }
+@media (max-width: 770px) {
+	body { padding: 1em; overflow-x: hidden; }
 	aside {
 		position: absolute;
 		top: 0;
@@ -123,5 +123,5 @@ aside > pre { margin-bottom: 0; }
 	aside > ul { margin: 0; margin-top: 4px; list-style: none; padding: 0;}
 	aside > ul > li { display: inline; padding: 0.25em; }
 	aside > p { display: none; }
-	article { max-width: 100vw; margin-top: 1.9em; }
+	article { max-width: 90vw; margin-top: 1.9em; }
 }
