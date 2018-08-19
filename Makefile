@@ -33,7 +33,7 @@ HTMLDIR  := $(MDDIR:./md/%=./www/%)
 # default target #
 ##################
 
-all: markdown www/files/index.html www/txt/atom.xml stagit sync
+all: markdown www/files/index.html www/txt/atom.xml sync
 
 ################################
 # actually existing filesystem #
