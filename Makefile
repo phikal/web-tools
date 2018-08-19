@@ -40,7 +40,7 @@ all: markdown www/files/index.html www/txt/atom.xml stagit sync
 ################################
 
 $(HTML): ./www/%.html: ./md/%.md head.html tail.html
-	sed $$(awk '/^# / { sub(/^# /, ""); print "s/%TITLE%/"$0"/"; d=1 } END { if (!d) print "s/%TITLE%/~phi/" }' $<) head.html > $@
+	sed "$$(awk '/^# / { sub(/^# /, ""); if ($$0) { print "s^%TITLE%^" $$0 "^"; d=1 } } END { if (!d) print "s/%TITLE%/~phi/" }' $<)" head.html > $@
 	cmark --smart --normalize $< >> $@
 	cat tail.html >> $@
 
