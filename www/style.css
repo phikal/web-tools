@@ -82,12 +82,11 @@ aside {
 	font-size: small;
 	padding: 0.75em;
 	margin: 0 4px;
-	background: #FFFFE4;
-	border-radius: 4px;
-	border: 1px solid #DDDDA3;
 	float: right;
 	max-width: 170px;
 	margin-left: 1em;
+	border: 0 solid #ccc;
+	border-left-width: 1px;
 }
 
 aside > h1 {
@@ -101,7 +100,7 @@ aside > ul {
 	margin: 0;
 }
 
-aside > pre { margin-bottom: 0; }
+aside a#adfree { float: right; width: 70px; }
 
 @media (max-width: 770px) {
 	body { padding: 1em; overflow-x: hidden; }
@@ -122,6 +121,6 @@ aside > pre { margin-bottom: 0; }
 	}
 	aside > ul { margin: 0; margin-top: 4px; list-style: none; padding: 0;}
 	aside > ul > li { display: inline; padding: 0.25em; }
-	aside > p { display: none; }
+	aside > p, aside a#adfree { display: none; }
 	article { max-width: 90vw; margin-top: 1.9em; }
 }
