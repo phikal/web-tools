@@ -27,6 +27,11 @@ BEGIN {
 	 printf xml("link", "", link)
 
 	 link["rel"] = "alternate"
+	 link["href"] = "https://" HOMEP PATH "/"
+	 link["type"] = "text/html"
+	 delete link["type"]
+
+	 link["rel"] = "alternate"
 }
 
 
@@ -74,8 +79,8 @@ function xml(tag, content, attr) {
 		  category["term"] = $i
 		  print xml("category", "", category)
 	 }
-	 print "<content type=\"html/xml\">"
-	 system("sed 1,2d md/txt/" $3 ".md | cmark --normalize")
+	 print "<content type=\"html\">"
+	 system("sed 1d md/txt/" $3 ".md | cmark --normalize | sed 's_&_\\&amp;_g; s_<_\\&lt;_g; s_>_\\&gt;_g'")
 	 print "</content>"
 	 print "</entry>"
 }
