@@ -58,15 +58,14 @@ function xml(tag, content, attr) {
 }
 
 !head {
-	 printf xml("updated", strftime(RFC3339, $2))
+	 print xml("updated", strftime(RFC3339, $2))
 	 head = !head
 }
 
 {
 	 link["href"] = "https://" HOMEP PATH "/" $3 ".html"
 
-
-	 printf "<entry>"
+	 print "<entry>"
 	 print xml("title", $1)
 	 print xml("updated", strftime(RFC3339, $2))
 	 print xml("id", "tag:" HOMEP "," strftime("%F", $2) ":/" $3)
