@@ -33,7 +33,7 @@ HTMLDIR  := $(MDDIR:./md/%=./www/%)
 # default target #
 ##################
 
-all: markdown www/files/index.html www/txt/atom.xml sync
+all: markdown www/files/index.html www/txt/atom.xml www/emacs.d.html sync
 
 ################################
 # actually existing filesystem #
@@ -74,6 +74,9 @@ www/txt/atom.xml: $(TXTS)
 	awk -f bin/blog.awk $^ | \
 		sort -k2nr | sed 20q | \
 		awk -f bin/atom.awk | asc2xml> $@
+
+www/emacs.d.html: ~/.emacs.d/conf.org
+	emacs -nw -Q --script ./bin/exconf.el
 
 $(GIT:%=www/git/%): $(GIT:%=www/git/%.git)
 	[ ! -d $@ ] && mkdir $@
