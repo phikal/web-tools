@@ -43,10 +43,12 @@ body && section == $1 && NR >= 3 {
 
 	print "<li>"
 	print "<a href=\"/" $2 "\">"
-	print "<img src=\"/tmb/" tmb "\" alt=\"" ($6 ? $6 : "-") "\"/>"
+	print "<img src=\"/tmb/" tmb "\"" ($6 ? "alt=\"" $6 "\"" : "")"/>"
 	print "</a>"
-	print "<h2>" $3 "</h2>"
-	print "<p>" $4 "</p>"
+	if ($3)
+		 print "<h2>" $3 "</h2>"
+	if ($4)
+		 print "<p>" $4 "</p>"
 	print "</li>"
 }
 
