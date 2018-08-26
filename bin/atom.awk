@@ -1,4 +1,9 @@
-# based on https://validator.w3.org/feed/docs/atom.html
+# an atom feed generator using gawk - philip k., 2018
+# written in accordance to https://validator.w3.org/feed/docs/atom.html
+
+# all markdown files have to be specified as command line
+# arguments. only those with a comment containing a unix timestamp (and
+# optionally tags), and a h1 header will part of the feed.
 
 BEGIN {
 	 TITLE = "~phi/txt feed"
