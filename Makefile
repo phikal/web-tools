@@ -96,6 +96,7 @@ update-git: # can take a while
 	@do
 	@cd $$f
 	git fetch -v
+	git gc
 	@git gc
 	@cd ../../..
 	@done
