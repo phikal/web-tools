@@ -5,11 +5,10 @@
 (add-to-list 'load-path (expand-file-name "elpa/htmlize-1.53" user-emacs-directory))
 (require 'htmlize)
 
-(load-theme 'leuven)
 (setq-default make-backup-files nil
 			  org-html-doctype "xhtml5"
 			  org-html-link-home "/"
-			  org-html-head-include-scripts ni;
+			  org-html-head-include-scripts nil
 			  org-html-html5-fancy t
 			  org-html-head "<link rel=\"stylesheet\" href=\"/normalize.css\" />
 <style>
