@@ -109,8 +109,6 @@ aside > ul {
 	margin: 0;
 }
 
-aside a#adfree { float: right; width: 70px; }
-
 @media (max-width: 770px) {
 	body { padding: 1em; overflow-x: hidden; }
 	aside {
