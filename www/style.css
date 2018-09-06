@@ -74,6 +74,9 @@ article ul#grid li h2 {
 
 article ul#grid li img {
 	border: 1px solid gray;
+	margin: 4px;
+	margin: auto;
+	display: block;
 }
 
 body > * { max-width: 100%; }
