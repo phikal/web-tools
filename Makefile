@@ -122,7 +122,7 @@ clean:
 	rm $(HTML)
 
 sync:
-	rsync -azrtuyihcPH --info=stats1 --links --delete www/ ${SSH_TARGET}
+	rsync -aruhlPHW --inplace --delete www/ ${SSH_TARGET}
 
 ###########
 # options #
