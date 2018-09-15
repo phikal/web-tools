@@ -94,8 +94,8 @@ aside {
 	float: right;
 	max-width: 170px;
 	margin-left: 1em;
-	border: 0 solid #ccc;
-	border-left-width: 1px;
+	border: 1px solid #abb;
+	background: #eff;
 }
 
 aside > h1 {
@@ -120,13 +120,12 @@ aside > ul {
 		text-align: center;
 		overflow-x: auto;
 		border-width: 0;
-		border-bottom-width:1px;
+		border-bottom-width: 1px;
 		border-radius: 0;
 		float: none;
 		margin: 0 0 0.75em 0;
 		font-size: smaller;
 		padding: 10px 0;
-		background: #eee;
 	}
 	aside > ul { margin: 0; margin-top: 4px; list-style: none; padding: 0;}
 	aside > ul > li { display: inline; padding: 0.25em; }
