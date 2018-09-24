@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<title>404</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0,maximum-zoom=1,maximum-scale=1.0,width=device-width" />
+<style>
+ body {
+     margin: auto auto;
+     padding: 0;
+     background: black;
+     overflow: none;
+ }
+ content, video {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     transform: translate(-50%,-50%);
+     -webkit-transform: translate(-50%,-50%);
+     -ms-transform: translate(-50%,-50%);
+ }
+ content {
+     border: 2px solid #000;
+     padding: 3em;
+     display: table;
+     font-family: Consolas, Hack, Monaco, Insonsolata, monospace, monospace;
+     cursor: pointer;
+     text-align: center;
+     border-radius: 5px;
+     transition: all 4s;
+     -webkit-transition: all 4s;
+     -ms-transition: all 4s;
+ }
+ h1 {
+     font-size: 4em;
+     margin: 0;
+ }
+ video {
+     padding: 0;
+     margin: 0;
+     min-width: 50vw;
+     min-height: 50vh;
+     max-width: 100vw;
+     max-height: 100vh;
+ }
+ a {
+     top: 0;
+     right: 0;
+     padding: 0.5em;
+     background: rgba(0,0,0,0.75);
+     font-weight: 300;
+     position: absolute;
+     color: white;
+     z-index: 100;
+     text-decoration: none;
+ }
+</style>
+<a href="/">HOME</a>
+<video></video>
+<content>
+	<h1>404</h1>
+	<span></span>
+</content>
+<script>
+ // Most files from 4chan/wsg or youtube
+ var vlist = [
+     "0NddVUvKmb", "16dsB1J8Zb", "2VYs72acVd", "AJ7zfZUtxq", "cWmHdNGHlZ",
+     "dedEtnbZL4", "dVII0wAggZ", "Fd1WN6QINP", "G6TAsbApgW", "idXTMSnfo5",
+     "k8YQ6XWACi", "L7AiYE7WJj", "LuHgyEvEqA", "OxdL924w91", "pCtmnfYy4n",
+     "ph7E6ymhZ2", "QG7WErjHws", "qK49g6Lga8", "quMcxWtyIm", "S8CTGrFGTt",
+     "sRifo2Soxh", "uhnA5gt7jC", "vc7d2abTAF", "vfSs6zDeNa", "VncQJPMKI6",
+     "xbBEuhqAR8", "ZYEE7vtLHp", "zGZTgukWKV", "dopci1AmuT", "FTulInmO48",
+     "KOTMPxh0mL", "QfdJbc3lAj", "y6NNQ4fC8b", "PSHeDYEzGe", // "FA6grMqQUC",
+     "1ZW0xtkFj9", "d54yXCpIPn", "MphhOCKbAp",
+ ], jlist = [
+     "お願いします", "ごめんなさい", "すみません", "ゆっくり話してください", "おはよう", "キモイ",
+     "分かりません", "どうやって？", "さわらないで!", "ほっといてくれ", "道を迷っています",
+     "ピーナッツ", "意識不明です", "レッド", "左", "のろま", "そこまでお願いします", "バカ",
+     "イギリスポンドは使えますか？", "お腹がすきました", "お任せします", "どなたですか？",
+     "間違えました", "私のサイズでありますか？", "騙してるんだ", "独身です", "可愛い！",
+     "何も(悪いこと)していません", "誤解でした", "どこへ連れて行くのですか？", "そうですね",
+     "ウソ！", "ヨーロッパが欲しいです",
+ ];
+
+ var body = document.getElementsByTagName("body")[0],
+	 vid = document.getElementsByTagName("video")[0],
+     txt = document.getElementsByTagName("span")[0],
+     cont = document.getElementsByTagName("content")[0].style,
+     select = (a) => a[Math.floor((Math.random() * 1e10) % a.length)];
+
+ (cc = () => { // change color
+     var r = Math.round(Math.random() * 255),
+         g = Math.round(Math.random() * 255),
+         b = Math.round(Math.random() * 255);
+     cont.background = "rgba(" + r +"," + g + "," + b + ",0.5)";
+     cont.borderColor = "rgb(" + r +"," + g + "," + b + ")";
+     cont.color = "rgb(" + (255 - g) + "," + (255 - b) + "," + (255 - r) + ")";
+	 setTimeout(cc, 4000);
+ })();
+
+ (body.onkeyup = vid.onended = () => {
+	 vid.src = "/vid/" + select(vlist) + ".webm";
+	 vid.play();
+	 txt.textContent = select(jlist);
+ })();
+</script>
