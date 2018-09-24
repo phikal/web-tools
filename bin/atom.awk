@@ -1,9 +1,16 @@
 # an atom feed generator using gawk - philip k., 2018
 # written in accordance to https://validator.w3.org/feed/docs/atom.html
 
-# all markdown files have to be specified as command line
-# arguments. only those with a comment containing a unix timestamp (and
-# optionally tags), and a h1 header will part of the feed.
+# stdio has to contain tab delemitered lines, where each nth
+# collumn corresponds to:
+# 1  => title
+# 2  => unix timestamp
+# 3  => file w/o extention
+# +4 => tags (optional)
+
+# the first line's timestamp is assumed to be the newest
+# article, and will thus be used to set the global "updated"
+# attribute.
 
 BEGIN {
 	 TITLE = "~phi/txt feed"
@@ -68,7 +75,7 @@ function xml(tag, content, attr) {
 }
 
 !head {
-	 print xml("updated", strftime(RFC3339, $2))
+	 printf xml("updated", strftime(RFC3339, $2))
 	 head = !head
 }
 
@@ -76,13 +83,13 @@ function xml(tag, content, attr) {
 	 link["href"] = "https://" HOMEP PATH "/" $3 ".html"
 
 	 print "<entry>"
-	 print xml("title", $1)
-	 print xml("updated", strftime(RFC3339, $2))
-	 print xml("id", "tag:" HOMEP "," strftime("%F", $2) ":/" $3)
-	 print xml("link", "", link)
+	 printf xml("title", $1)
+	 printf xml("updated", strftime(RFC3339, $2))
+	 printf xml("id", "tag:" HOMEP "," strftime("%F", $2) ":/" $3)
+	 printf xml("link", "", link)
 	 for (i = 5; i <= NF; i++) {
 		  category["term"] = $i
-		  print xml("category", "", category)
+		  printf xml("category", "", category)
 	 }
 	 print "<content type=\"html\">"
 	 system("sed 1d md/txt/" $3 ".md | cmark --normalize | sed 's_&_\\&amp;_g; s_<_\\&lt;_g; s_>_\\&gt;_g'")

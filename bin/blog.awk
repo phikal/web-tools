@@ -1,3 +1,9 @@
+# a blog parser using gawk - philip k., 2018
+
+# all markdown files have to be specified as command line
+# arguments. only those with a comment containing a unix timestamp (and
+# optionally tags), and a h1 header will part of the feed.
+
 BEGIN { OFS = "\t" }
 
 /^<!-- [[:digit:]]+ (.+ )?-->$/ {
