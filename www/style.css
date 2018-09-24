@@ -94,8 +94,10 @@ aside {
 	float: right;
 	max-width: 170px;
 	margin-left: 1em;
-	border: 1px solid #abb;
+	border: 0 solid #abb;
+	border-left-width: 1px;
 	background: #eff;
+	background-image: linear-gradient(to right, #eff, #fff, #fff);
 }
 
 aside > h1 {
@@ -121,6 +123,7 @@ aside > ul {
 		overflow-x: auto;
 		border-width: 0;
 		border-bottom-width: 1px;
+		background: #eff;
 		border-radius: 0;
 		float: none;
 		margin: 0 0 0.75em 0;
