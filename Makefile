@@ -51,7 +51,17 @@ $(GALFILE): gal.tsv
 	awk -v section=$(@:md/gal/%.md=%)	-f bin/grid.awk $<	> $@
 
 $(ITMPDIR):
-	convert $(@:www/tmb/img/%=www/img/%) -alpha off -resize 200x200\> $@
+	convert -alpha off                   \
+		$(@:www/tmb/img/%=www/img/%)     \
+		-unsharp 0.25x0.25+8+0.065       \
+		-interlace none                  \
+		-ordered-dither o8x8             \
+		-filter Lanczos                  \
+		-quality 50                      \
+		-monochrome                      \
+		-auto-level	                     \
+		-strip -thumbnail 200x200\>      \
+		-compose CopyOpacity -composite $@
 
 $(DOCFILE): doc.tsv
 	awk -v section=$(@:md/doc/%.md=%)	-f bin/grid.awk $<	> $@
