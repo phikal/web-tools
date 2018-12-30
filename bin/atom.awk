@@ -91,9 +91,9 @@ function xml(tag, content, attr) {
 		  category["term"] = $i
 		  printf xml("category", "", category)
 	 }
-	 print "<content type=\"html\">"
-	 system("sed 1d md/txt/" $3 ".md | cmark --normalize | sed 's_&_\\&amp;_g; s_<_\\&lt;_g; s_>_\\&gt;_g'")
-	 print "</content>"
+	 print "<content type=\"html\"><![CDATA["
+	 system("sed 1d md/txt/" $3 ".md | cmark --normalize")
+	 print "]]></content>"
 	 print "</entry>"
 }
 
