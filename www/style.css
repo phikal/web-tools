@@ -9,17 +9,14 @@
  * directory this by far */
 
 body {
-	font-family: arial, sans-serif;
 	margin: 1em auto 0 auto;
 	display: table;
+    font-family: "Fira Sans", "Open Sans", sans-serif;
 }
 
-p {
-	text-align: justify;
-	color: #111;
-}
+p { text-align: justify; }
 
-a { color: #3465a4; text-decoration: none; }
+a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 code, kbd, tt {
@@ -28,7 +25,7 @@ code, kbd, tt {
 
 blockquote{ font-style: italic; }
 
-hr{ border:0; border-bottom:1px solid #ccc; }
+hr{ border:0; border-bottom:1px solid black; }
 
 article {
 	padding: 0.25em;
@@ -56,7 +53,6 @@ article ul#grid li {
 	padding: 4px;
 	max-width: 150px;
 	flex-basis: 150px;
-	flex-grow:
 	font-size: smaller;
 	margin: 4px auto;
 }
@@ -71,21 +67,17 @@ article ul#grid li h2 {
 	text-align: center;
 }
 
-
 article ul#grid li img {
 	border: 1px solid gray;
 	margin: 4px;
 	margin: auto;
 	display: block;
+
 }
 
 body > * { max-width: 100%; }
 body > pre,
 body > table { overflow-x: auto; }
-
-article h1 b,
-article h2 b,
-article h3 b { color: #888; }
 
 aside {
 	font-size: small;
@@ -94,10 +86,10 @@ aside {
 	float: right;
 	max-width: 170px;
 	margin-left: 1em;
-	border: 0 solid #abb;
+	border-width: 0;
 	border-left-width: 1px;
-	background: #eff;
-	background-image: linear-gradient(to right, #eff, #fff, #fff);
+	overflow-x: hidden;
+	border: 1px solid black;
 }
 
 aside > h1 {
@@ -111,6 +103,10 @@ aside > ul {
 	margin: 0;
 }
 
+aside > hr {
+	display: none;
+}
+
 @media (max-width: 770px) {
 	body { padding: 1em; overflow-x: hidden; }
 	aside {
@@ -121,17 +117,25 @@ aside > ul {
 		max-width: none;
 		text-align: center;
 		overflow-x: auto;
-		border-width: 0;
 		border-bottom-width: 1px;
-		background: #eff;
 		border-radius: 0;
 		float: none;
 		margin: 0 0 0.75em 0;
 		font-size: smaller;
 		padding: 10px 0;
+		border-width: 0 0 1px 0;
 	}
 	aside > ul { margin: 0; margin-top: 4px; list-style: none; padding: 0;}
 	aside > ul > li { display: inline; padding: 0.25em; }
-	aside > p, aside a#adfree { display: none; }
 	article { max-width: 90vw; margin-top: 1.9em; }
 }
+
+/* colors */
+body { background: white; }
+p { color: #111; }
+a { color: #65a434; }
+hr { border-color: black; }
+aside { background: #ffa; }
+article h1 b,
+article h2 b,
+article h3 b { color: gray; }
