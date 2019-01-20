@@ -92,7 +92,7 @@ function xml(tag, content, attr) {
 		  printf xml("category", "", category)
 	 }
 	 print "<content type=\"html\"><![CDATA["
-	 system("sed 1d md/txt/" $3 ".md | cmark --normalize")
+	 system("sed 1d md/txt/" $3 ".md | cmark")
 	 print "]]></content>"
 	 print "</entry>"
 }
