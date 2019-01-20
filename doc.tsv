@@ -1,20 +1,18 @@
-infog	Infographics	Miscellaneous images containing interesting information
-faces	Faces	Reactions or emotions caught in image form
-wallp	Wallpapers	Images to use as wallpapers
-selfm	Self made	My attempts to create cyber-imagery, from 2014 onwards
-etc		Etcetera	Whatever doesn't fit the previous categories
+cheat	Cheatsheets	A collection of cheetsheets on compter-related topics
 
-infog	chem.jpg	Chemical Reactions
-infog	circlon.jpg	The Circlon Model of the Nuclear Structure
-infog	circuts.jpg	Elements of Electrical Circuts
-infog	elmag_spekt.jpg	The Electromagnetical Spectrum
-infog	emacs.png	Overview of Emacs
-infog	world-history.jpg	World History
-infog	relat_math.jpg	Connections between Mathematical Ideas
-infog	ethli_groups_africa.jpg	Map of Ethnic Groups in Africa
-infog	gorules.png	Rules to Play the Game of Go
-infog	guide_to_cat_colors.jpg	Guide to Cat Colors
-infog	music-pyramid.jpg	Musical Genres ordered by esotericy
-infog	vim-cheat-sheet.png	Overview of Vim
-infog	vi.jpg	Vi keybindings
-infog	ww1-causes.jpg	Causes that contributed to WW1
+cheat	android-lifecycle.pdf	Android Lifecycles
+cheat	awk.pdf	AWK
+cheat	bash.pdf	Bash
+cheat	calculus.pdf	Calculus
+cheat	c.pdf	C
+cheat	emacs.pdf	Emacs
+cheat	forth.pdf	Forth
+cheat	gdb.pdf	GDB
+cheat	git.pdf	Git
+cheat	gnuplot.pdf	Gnuplot
+cheat	haskell.pdf	Haskell
+cheat	ip-command.pdf	ip (command)
+cheat	java.pdf	Java
+cheat	latex.pdf	LaTeX
+cheat	python.pdf	Python
+cheat	scala.pdf	Scala
