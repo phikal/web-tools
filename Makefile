@@ -2,15 +2,15 @@
 # constants #
 #############
 
-SSH_TARGET = raven:www
+SSH_TARGET = bateleur:/var/www/html/
 
 #############
 # variables #
 #############
 
 GAL = infog faces wallp selfm etc
-DOC =
-GIT = RNDj ReGeX doji llist nbody neoc sc wastat scripts emacs.d web-tools # 0bwm bft
+DOC = cheat
+GIT = ReGeX doji nbody wastat emacs.d web-tools # 0bwm bft
 
 #############################
 # automatically found files #
@@ -41,7 +41,7 @@ all: markdown www/files/index.html www/txt/atom.xml www/emacs.d.html sync
 
 $(HTML): ./www/%.html: ./md/%.md head.html tail.html
 	sed "$$(awk '/^# / { sub(/^# /, ""); if ($$0) { print "s^%TITLE%^" $$0 "^"; d=1 } } END { if (!d) print "s/%TITLE%/~phi/" }' $<)" head.html > $@
-	cmark --smart --normalize $< >> $@
+	cmark --smart $< >> $@
 	cat tail.html >> $@
 
 $(HTMLDIR): ./www/%: ./md/%
@@ -51,17 +51,16 @@ $(GALFILE): gal.tsv
 	awk -v section=$(@:md/gal/%.md=%)	-f bin/grid.awk $<	> $@
 
 $(ITMPDIR):
-	convert -alpha off                   \
-		$(@:www/tmb/img/%=www/img/%)     \
+	convert $(@:www/tmb/img/%=www/img/%) \
+		-alpha off                       \
 		-unsharp 0.25x0.25+8+0.065       \
 		-interlace none                  \
 		-ordered-dither o8x8             \
 		-filter Lanczos                  \
 		-quality 50                      \
-		-monochrome                      \
-		-auto-level	                     \
+		-auto-level                      \
 		-strip -thumbnail 200x200\>      \
-		-compose CopyOpacity -composite $@
+		-compose CopyOpacity $@
 
 $(DOCFILE): doc.tsv
 	awk -v section=$(@:md/doc/%.md=%)	-f bin/grid.awk $<	> $@
@@ -83,7 +82,7 @@ www/files/index.html: www/files $(find www/files)
 www/txt/atom.xml: $(TXTS)
 	awk -f bin/blog.awk $^ | \
 		sort -k2nr | sed 20q | \
-		awk -f bin/atom.awk | asc2xml> $@
+		awk -f bin/atom.awk > $@
 
 www/emacs.d.html: ~/.emacs.d/conf.org
 	emacs -nw -Q --script ./bin/exconf.el
@@ -120,7 +119,7 @@ ggal: $(GALFILE) $(ITMPDIR)
 gdoc: $(DOCFILE) $(DTMPDIR)
 
 clean:
-	rm www/tmb/pdf/* www/tmb/img/* www/index.html www/gal/* www/doc/*
+	rm -f www/tmb/pdf/* www/tmb/img/* www/index.html www/gal/* www/doc/*
 	@for f in $(GALFILE)
 	@do
 	@rm -f $$f
@@ -129,10 +128,10 @@ clean:
 	@do
 	rm -f $$f
 	@done
-	rm $(HTML)
+	rm -f $(HTML)
 
 sync:
-	rsync -aruhlPHW --inplace --delete www/ ${SSH_TARGET}
+	rsync -vtruhlHW --partial --delete www/ ${SSH_TARGET}
 
 ###########
 # options #
