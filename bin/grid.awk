@@ -20,9 +20,9 @@ BEGIN {
 	body = 1
 
 	if (doc)
-		 print "# **Documents:** " title[section] "\n"
+		 print "# Documents: " title[section] "\n"
 	else if (gal)
-		 print "# **Gallery:** " title[section] "\n"
+		 print "# Gallery: " title[section] "\n"
 
 	print descr[section] "\n"
 	print ""
@@ -40,6 +40,8 @@ BEGIN {
 # section filename title description hover
 body && section == $1 && NR >= 3 {
 	tmb = $2
+	if (doc)
+		sub(/\.pdf$/, ".png",tmb)
 
 	print "<li>"
 	print "<a href=\"/" $2 "\">"
