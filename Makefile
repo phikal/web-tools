@@ -66,7 +66,7 @@ $(DOCFILE): doc.tsv
 	awk -v section=$(@:md/doc/%.md=%)	-f bin/grid.awk $<	> $@
 
 $(DTMPDIR):
-	mutool draw -o $@ -F png -r 50 -w 200 -h 200 -c gray $(@:www/tmb/pdf/%.png=www/pdf/%.pdf) 1
+	mutool draw -o $@ -F png -r 50 -w 200 -h 200 $(@:www/tmb/pdf/%.png=www/pdf/%.pdf) 1
 	optipng -silent -strip all -o6 $@
 
 www/git/index.html: $(GIT:%=www/git/%)
