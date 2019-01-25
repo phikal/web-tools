@@ -11,7 +11,7 @@
 body {
 	margin: 1em auto 0 auto;
 	display: table;
-    font-family: "Fira Sans", "Open Sans", sans-serif;
+	line-height: 1.2em;
 }
 
 p { text-align: justify; }
@@ -19,21 +19,20 @@ p { text-align: justify; }
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-code, kbd, tt {
-	font-family: Consolas, Hack, Monaco, Insonsolata, monospace, monospace;
+code, kbd, tt, pre {
+	font-family: monospace, monospace;
 }
 
 blockquote{ font-style: italic; }
 
-hr{ border:0; border-bottom:1px solid black; }
+hr{ border:0; border-bottom:1px dashed black; }
 
 article {
-	padding: 0.25em;
 	float: right;
 	width: 550px;
 }
 
-article h1 { font-size: 150%; }
+article h1 { font-size: 150%; line-height: 130%; }
 article h2 { font-size: 110%; }
 article h3 { font-size: 105%; }
 article h4 { font-size: 100%; }
@@ -89,7 +88,7 @@ aside {
 	border-width: 0;
 	border-left-width: 1px;
 	overflow-x: hidden;
-	border: 1px solid black;
+	border: 1px solid;
 }
 
 aside > h1 {
@@ -101,10 +100,6 @@ aside > ul {
 	list-style: lower-greek;
 	padding: 0 0 0em 1.5em;
 	margin: 0;
-}
-
-aside > hr {
-	display: none;
 }
 
 @media (max-width: 770px) {
@@ -127,15 +122,12 @@ aside > hr {
 	}
 	aside > ul { margin: 0; margin-top: 4px; list-style: none; padding: 0;}
 	aside > ul > li { display: inline; padding: 0.25em; }
-	article { max-width: 90vw; margin-top: 1.9em; }
+	article { max-width: 90vw; margin-top: 2.6em; }
 }
 
 /* colors */
-body { background: white; }
-p { color: #111; }
-a { color: #65a434; }
-hr { border-color: black; }
-aside { background: #ffa; }
-article h1 b,
-article h2 b,
-article h3 b { color: gray; }
+body, article ul#grid h2 { background: #FFF; color: black; }
+a { color: #35A; }
+article ul#grid a:hover { margin: unset; padding: unset; background: unset; }
+aside, hr { background: #cef; border-color: #66A; }
+.subsection { color: #66A; }
