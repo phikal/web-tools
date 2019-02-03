@@ -28,6 +28,7 @@ TXTS     != find ./md/txt/ -type f -name "*.md" -and -not -name index.md
 HTML     := $(MARKDOWN:./md/%.md=./www/%.html)
 MDDIR    != find ./md/ -type d
 HTMLDIR  := $(MDDIR:./md/%=./www/%)
+TRFILES  != find www/files -not -name index.html
 
 ##################
 # default target #
@@ -72,7 +73,7 @@ $(DTMPDIR):
 www/git/index.html: $(GIT:%=www/git/%)
 	stagit-index $(GIT:%=www/git/%.git/) > $@
 
-www/files/index.html: www/files $(find www/files)
+www/files/index.html: $(TRFILES)
 	tree -I index.html -T files -H /files --dirsfirst -F -D --du -h -Q -C -o $@ $<
 	sed -i '/GENERATOR/a<style>body{ margin: 0.5em; }</style>' $@
 	sed -i '/GENERATOR/a<link rel="stylesheet" href="/normalize.css" />' $@
@@ -117,6 +118,8 @@ git: update-git stagit
 ggal: $(GALFILE) $(ITMPDIR)
 
 gdoc: $(DOCFILE) $(DTMPDIR)
+
+files: www/files/index.html
 
 clean:
 	rm -f www/tmb/pdf/* www/tmb/img/* www/index.html www/gal/* www/doc/*
