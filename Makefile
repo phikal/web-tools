@@ -10,7 +10,7 @@ SSH_TARGET = bateleur:/var/www/html/
 
 GAL = infog faces wallp selfm etc
 DOC = cheat
-GIT = ReGeX doji nbody wastat emacs.d web-tools # 0bwm bft
+GIT = ReGeX doji nbody wastat emacs.d web-tools img-counter # 0bwm bft
 
 #############################
 # automatically found files #
