@@ -1,8 +1,7 @@
-*.html
-!head.html
-!tail.html
-*.png
-*.jpg
-*.gif
+md/
+www/
+!www/style.css
 *.md
 atom.xml
+gal.tsv
+doc.tsv
