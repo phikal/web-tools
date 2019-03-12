@@ -41,9 +41,9 @@ all: markdown www/files/index.html www/txt/atom.xml www/emacs.d.html sync
 ################################
 
 $(HTML): ./www/%.html: ./md/%.md head.html tail.html
-	sed "$$(awk '/^# / { sub(/^# /, ""); if ($$0) { print "s^%TITLE%^" $$0 "^"; d=1 } } END { if (!d) print "s/%TITLE%/~phi/" }' $<)" head.html > $@
-	awk 'n { print; next } /^<!-- [[:digit:]]+ / { date = $$2 } /^# / { print; if (date) print "\n<time>" strftime("%F", date) "</time>"; n = 1 }' $< | cmark --smart >> $@
-	cat tail.html >> $@
+	awk -v head=head.html -v tail=tail.html\
+		-f bin/text.awk $< |\
+		cmark --smart > $@
 
 $(HTMLDIR): ./www/%: ./md/%
 	@mkdir -p $@
