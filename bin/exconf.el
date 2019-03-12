@@ -12,21 +12,7 @@
 	  org-html-head-include-scripts t
 	  org-html-html5-fancy t
 	  org-html-head "<link rel=\"stylesheet\" href=\"/normalize.css\" />
-<style>
-body {
-	margin: 1em auto 0 auto;
-    display: table;
-    line-height: 1.2em;
-	text-align: justify;
-    font-family: \"Open Sans\", \"Noto Sans\", sans-serif;
-    color: #222;
-}
-code, kbd, tt, pre {
-	font-family: Consolas, Hack, Monaco, Insonsolata, monospace, monospace;
-}
-
-#content { 	max-width: 60em; }
-</style>")
+<link rel=\"stylesheet\" href=\"/style.css\" />")
 
 (find-file (expand-file-name "conf.org" user-emacs-directory))
 
