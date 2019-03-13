@@ -1,7 +1,9 @@
-/^<!-- [[:digit:]]+ / && $(NF - 1) == "-->" {
+BEGIN { FS = " " }
+
+$1 == "<!--@" {
 	date = $2
 
-	for (i = 2; i < NF - 1; i++) {
+	for (i = 2; i < NF; i++) {
 		if ($i ~ /^:/) {
 			sub(/^:/, "", $i);
 			plist[$i] = 1;
@@ -25,13 +27,15 @@
 			else if (title)
 				print "<title>" title "</title>\n"
 		} else if (line ~ /%SYNTAX%/) {
-			print "<!-- highlight.js: https://highlightjs.org/ -->"
-			print "<link rel=\"stylesheet\" href=\"/hl/default.css\">"
-			print "<script src=\"/hl/highlight.js\"></script>"
-			print "<script>"
-			print "hljs.configure({ tabReplace: '    ' })"
-			print "hljs.initHighlightingOnLoad();"
-			print "</script>"
+			if ("syntax" in plist) {
+				print "<!-- highlight.js: https://highlightjs.org/ -->"
+				print "<link rel=\"stylesheet\" href=\"/hl/default.css\">"
+				print "<script src=\"/hl/highlight.js\"></script>"
+				print "<script>"
+				print "hljs.configure({ tabReplace: '    ' })"
+				print "hljs.initHighlightingOnLoad();"
+				print "</script>"
+			}
 		} else if (line ~ /%LINKS%/) {
 			if ("next" in plist)
 				printf("<link rel=\"next\" href=\"%s\">", plist["next"]);

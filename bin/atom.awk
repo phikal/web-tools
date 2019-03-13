@@ -88,6 +88,7 @@ function xml(tag, content, attr) {
 	 printf xml("id", "tag:" HOMEP "," strftime("%F", $2) ":/" $3)
 	 printf xml("link", "", link)
 	 for (i = 5; i <= NF; i++) {
+		  if ($i ~ /^[:=]/) continue;
 		  category["term"] = $i
 		  printf xml("category", "", category)
 	 }
