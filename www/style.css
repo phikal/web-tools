@@ -9,33 +9,38 @@
  * directory this by far */
 
 body {
-	margin: 1em auto 0 auto;
-	display: table;
-	line-height: 1.2em;
+	margin: 1em 15% 0 15%;
+	font-family: sans-serif;
+	text-align: justify;
+	text-rendering: optimizeLegibility;
+	hyphens: auto;
+	line-height: 1.2;
 }
-
-p { text-align: justify; }
 
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-code, kbd, tt, pre {
-	font-family: monospace, monospace;
-}
-
 blockquote{ font-style: italic; }
+table { margin: auto; }
 
-hr{ border:0; border-bottom:1px dashed black; }
+hr{ border-style: solid; border-width: 1px 0 0 0; }
 
-article {
-	float: right;
-	width: 550px;
+u {
+	color: inherit;
+	opacity: 0.25;
+	text-decoration: none;
 }
+u::before { content: "["; }
+u::after { content: "]"; }
 
-article h1 { font-size: 150%; line-height: 130%; }
-article h2 { font-size: 110%; }
-article h3 { font-size: 105%; }
-article h4 { font-size: 100%; }
+/* ARTICLE */
+
+#content h1, article h1 { font-size: 150%; line-height: 130%; }
+#content h2, article h2 { font-size: 125%; }
+#content h3, article h3 { font-size: 115%; }
+#content h4, article h4 { font-size: 110%; }
+#content h5, article h5 { font-size: 105%; }
+#content h6, article h6 { font-size: 103%; }
 
 article *:first-child { margin-top: 0; max-width: 100%;}
 article ul { padding-left: 1.75em; }
@@ -71,23 +76,23 @@ article ul#grid li img {
 	margin: 4px;
 	margin: auto;
 	display: block;
-
 }
 
-body > * { max-width: 100%; }
-body > pre,
-body > table { overflow-x: auto; }
+article pre {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 4px;
+	margin: 1em;
+	padding: 1em;
+}
+
+/* ASIDE */
 
 aside {
 	font-size: small;
-	padding: 0.75em;
-	margin: 0 4px;
+	padding: 1em;
+	margin: 0 0 1em 1em;
 	float: right;
-	max-width: 170px;
-	margin-left: 1em;
-	border-width: 0;
-	border-left-width: 1px;
-	overflow-x: hidden;
 	border: 1px solid;
 }
 
@@ -102,8 +107,9 @@ aside > ul {
 	margin: 0;
 }
 
+/* mobile screen */
 @media (max-width: 770px) {
-	body { padding: 1em; overflow-x: hidden; }
+	body { margin: 1em 0 0 0; padding: 1em 1em 0 1em; overflow-x: hidden; }
 	aside {
 		position: absolute;
 		top: 0;
@@ -112,8 +118,6 @@ aside > ul {
 		max-width: none;
 		text-align: center;
 		overflow-x: auto;
-		border-bottom-width: 1px;
-		border-radius: 0;
 		float: none;
 		margin: 0 0 0.75em 0;
 		font-size: smaller;
@@ -125,9 +129,28 @@ aside > ul {
 	article { max-width: 90vw; margin-top: 2.6em; }
 }
 
+/* masto */
+.mastodon-embed {
+	max-width: 100%;
+	width: 450px;
+	min-height: 220px;
+	display: block;
+	margin: auto;
+	border-radius: 4px;
+	border: 1px solid black;
+	box-shadow: 0 0 8px #888;
+}
+
 /* colors */
 body, article ul#grid h2 { background: #FFF; color: black; }
-a { color: #35A; }
+a { color: #25D; }
+blockquote { color: #224; }
 article ul#grid a:hover { margin: unset; padding: unset; background: unset; }
-aside, hr { background: #cef; border-color: #66A; }
+aside, hr { background: #DEF; border-color: #66F; }
 .subsection { color: #66A; }
+article time:first-of-type { color: #999; }
+article pre { background: #f5f5f5; border-color: #ddd; }
+
+/* fonts */
+body { font-family: sans-serif; }
+code, kbd, tt, pre, article time:first-of-type { font-family: monospace, monospace; }
