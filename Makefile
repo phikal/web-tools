@@ -2,15 +2,10 @@
 # constants #
 #############
 
-SSH_TARGET = bateleur:/var/www/html/
-
-#############
-# variables #
-#############
-
+SSH_TARGET = bateleur:/var/www/htdocs/zge.us.to/
 GAL = infog faces wallp selfm etc
 DOC = cheat
-GIT = ReGeX doji nbody wastat emacs.d web-tools img-counter # 0bwm bft
+GIT = ReGeX doji ijod nbody sc wastat emacs.d web-tools img-counter llist
 
 #############################
 # automatically found files #
@@ -34,7 +29,7 @@ TRFILES  != find www/files -not -name index.html
 # default target #
 ##################
 
-all: markdown www/files/index.html www/txt/atom.xml www/emacs.d.html sync
+all: markdown www/files/index.html www/txt/atom.xml www/emacs.d.html
 
 ################################
 # actually existing filesystem #
@@ -106,7 +101,7 @@ update-git: # can take a while
 	@do
 	@cd $$f
 	git fetch -v
-	git gc
+	git gc --aggressive --quiet
 	@git gc
 	@cd ../../..
 	@done
