@@ -50,7 +50,7 @@ $1 == "<!--@" {
 
 	print "\n# " title
 
-	if (date) print "\n<time>" strftime("%F", date) "</time>";
+	if (date) print "\n<time id=\"posted\">" strftime("%d %b, %Y", date) "</time>";
 
 	head = 0
 
