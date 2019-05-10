@@ -9,16 +9,19 @@
  * directory this by far */
 
 body {
-	margin: 1em 15% 0 15%;
-	font-family: sans-serif;
+	margin: 5% auto;
+	max-width: 54em;
+	padding: 0 1em;
 	text-align: justify;
 	text-rendering: optimizeLegibility;
 	hyphens: auto;
-	line-height: 1.2;
+	line-height: 1.4;
 }
 
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
+ul#grid a > img { opacity: 0.5; }
+ul#grid a:hover > img { opacity: 1; }
 
 blockquote{ font-style: italic; }
 table { margin: auto; }
@@ -27,7 +30,7 @@ hr{ border-style: solid; border-width: 1px 0 0 0; }
 
 u {
 	color: inherit;
-	opacity: 0.25;
+	opacity: 0.33333;
 	text-decoration: none;
 }
 u::before { content: "["; }
@@ -93,17 +96,30 @@ aside {
 	padding: 1em;
 	margin: 0 0 1em 1em;
 	float: right;
-	border: 1px solid;
+	border-style: solid;
+	border-width: 0 0 0 1px;
+}
+
+
+aside > img[alt=me] {
+	padding: 0;
+	margin: 4px -1em;
+	border-width: 0;
+	border-style: solid;
+	display: block;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
 }
 
 aside > h1 {
 	font-size: inherit;
 	margin: 0;
+	padding-bottom: 8px;
 }
 
 aside > ul {
 	list-style: lower-greek;
-	padding: 0 0 0em 1.5em;
+	padding: 4px 0 0em 1.5em;
 	margin: 0;
 }
 
@@ -126,6 +142,7 @@ aside > ul {
 	}
 	aside > ul { margin: 0; margin-top: 4px; list-style: none; padding: 0;}
 	aside > ul > li { display: inline; padding: 0.25em; }
+	aside > img[alt=me] { display: none; }
 	article { max-width: 90vw; margin-top: 2.6em; }
 }
 
@@ -142,15 +159,15 @@ aside > ul {
 }
 
 /* colors */
-body, article ul#grid h2 { background: #FFF; color: black; }
+body, article ul#grid h2 { background: white; color: #222; }
 a { color: #25D; }
-blockquote { color: #224; }
+blockquote { color: #223; }
 article ul#grid a:hover { margin: unset; padding: unset; background: unset; }
-aside, hr { background: #DEF; border-color: #66F; }
+aside, hr, aside > img[alt=me] { border-color: #48F; }
 .subsection { color: #66A; }
-article time:first-of-type { color: #999; }
+article time#posted { color: #999; }
 article pre { background: #f5f5f5; border-color: #ddd; }
 
 /* fonts */
-body { font-family: sans-serif; }
-code, kbd, tt, pre, article time:first-of-type { font-family: monospace, monospace; }
+body { font-family: "Open Sans", "Noto Sans", "Liberation Sans", Helvetica, arial, sans-serif; }
+code, kbd, tt, pre { font-family: "Noto Mono", "Liberation Mono", monospace, _; }
