@@ -8,11 +8,11 @@
 (setq make-backup-files nil
 	  org-edit-src-content-indentation 0
 	  org-html-doctype "xhtml5"
-	  org-html-link-home "/"
 	  org-html-head-include-scripts t
 	  org-html-html5-fancy t
-	  org-html-head "<link rel=\"stylesheet\" href=\"/normalize.css\" />
-<link rel=\"stylesheet\" href=\"/style.css\" />")
+	  org-html-head (concat
+					 "<link rel=\"stylesheet\" href=\"/normalize.css\" />"
+					 "<link rel=\"stylesheet\" href=\"/style.css\" />"))
 
 (find-file (expand-file-name "conf.org" user-emacs-directory))
 
@@ -23,4 +23,15 @@
 
 (org-html-export-as-html)
 (switch-to-buffer "*Org HTML Export*")
+(goto-char (point-min))
+(search-forward "<body>")
+(insert (with-temp-buffer
+		  (insert-file-literally "~/code/web/www/head.html")
+		  (let ((beg (goto-char (point-min))))
+			(search-forward "<body>")
+			(delete-region beg (point)))
+		  (goto-char (1- (point-max)))
+		  (beginning-of-line)
+		  (kill-line)
+		  (buffer-string)))
 (write-file (expand-file-name "~/code/web/www/www/emacs.d.html"))
