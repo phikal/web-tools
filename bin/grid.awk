@@ -20,9 +20,9 @@ BEGIN {
 	body = 1
 
 	if (doc)
-		 print "# Documents: " title[section] "\n"
+		 print "# documents: " title[section] "\n"
 	else if (gal)
-		 print "# Gallery: " title[section] "\n"
+		 print "# gallery: " title[section] "\n"
 
 	print descr[section] "\n"
 	print ""
